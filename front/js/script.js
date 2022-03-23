@@ -5,21 +5,21 @@
 let products = [];
 
 /* Je crée une fonction qui récupére tous les produits depuis mon API */
-async function getProducts(){
+async function getProducts() {
 
- await fetch("http://localhost:3000/api/products/")
-    /* Récupération des données au format JSON */
-    .then(res => res.json())
+    await fetch("http://localhost:3000/api/products/")
+        /* Récupération des données au format JSON */
+        .then(res => res.json())
 
-    /* Stockage des données dans la variable  */
-    .then(data => (products = data))
+        /* Stockage des données dans la variable  */
+        .then(data => (products = data))
 
-    /* Récupération des logs dans la console */
-    .then(function(value) {
+        /* Récupération des logs dans la console */
+        .then(function (value) {
 
-        console.log("API:", value);
+            console.log("API:", value);
 
-      })
+        })
 
 }
 
@@ -33,20 +33,20 @@ async function displayProducts() {
     let items = document.getElementById("items");
 
     /* Création d'une boucle permettant d'afficher la totalité des produits */
-    for(let i = 0; i < products.length; i++){
-    
+    for (let i = 0; i < products.length; i++) {
+
         /* Création des éléments HTML */
         let productLink = document.createElement("a");
         let productArticle = document.createElement("article");
         let productImage = document.createElement("img");
         let productName = document.createElement("h3");
         let productDescription = document.createElement("p");
-    
+
         /* Hiérarchisation parents/enfants des différents éléments HTML */
         items.appendChild(productLink)
             .appendChild(productArticle)
             .append(productImage, productName, productDescription);
-    
+
         /* Création des attributs/classes sur les éléments HTML */
         productLink.href = `./product.html?id=${products[i]._id}`;
         productImage.alt = products[i].altTxt;
@@ -57,7 +57,7 @@ async function displayProducts() {
         productDescription.textContent = products[i].description;
 
     }
-    
+
 }
 
 /* Appel de la fonction pour afficher les vignettes */

@@ -88,7 +88,7 @@ function adjustQuantity() {
     /* Si quantité < 1 = invalide, alors on force la valeur de l'input à s'ajuster à 1 */
     if (quantity.value < minQuantity) {
 
-        document.getElementById("quantity").value = "";
+        document.getElementById("quantity").value = `${minQuantity}`;
 
     }
 
@@ -98,12 +98,7 @@ function adjustQuantity() {
         document.getElementById("quantity").value = `${maxQuantity}`;
 
     }
-    else {
 
-        /* Sinon la valeur qui est dans l'input est gardée automatiquement */
-        let message = document.getElementById("message");
-        message.textContent = "";
-    }
 }
 
 /* Fonction pour l'affichage du message de succés d'ajout de produit au localStorage du panier */
@@ -139,13 +134,13 @@ function messageDisplay() {
 }
 
 
-function cartNotNull(){
+function cartNotNull() {
 
-     /* Initialisation de la valeur maximale pour la quantité */
-     const maxQuantity = 100;
+    /* Initialisation de la valeur maximale pour la quantité */
+    const maxQuantity = 100;
 
-     /* Initialisation de la couleur du produit */
-     let colorChoice = document.getElementById("colors");
+    /* Initialisation de la couleur du produit */
+    let colorChoice = document.getElementById("colors");
 
     /* Création de l'objet produit à ajouter */
     const productToAdd = {
@@ -179,7 +174,7 @@ function cartNotNull(){
         for (i = 0; i < cart.length; i++) {
 
             /* On transforme ici le message de succés en message d'erreur pour l'affichage à l'utilisateur */
-            
+
             message.innerHTML = `La quantité maximale du produit ne peut pas dépasser 100.
                 <br>
                 <br>
@@ -234,7 +229,7 @@ async function addToCart() {
         /* Sinon si le panier du localStorage contient quelque chose */
         else {
 
-           cartNotNull();
+            cartNotNull();
         }
 
         /* On met à jour le localStorage du panier */
